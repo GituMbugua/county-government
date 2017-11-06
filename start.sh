@@ -1,3 +1,3 @@
-#!/usr/bin/env bash
+export SECRET_KEY=s3cr3tk3y
 
-export SECRET_KEY=
+python3.6 manage.py server
