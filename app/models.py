@@ -121,6 +121,7 @@ class WomanRep(db.Model):
 
 
 class MCA(db.Model):
+    __tablename__ = 'mcas'
     id = db.Column(db.Integer, primary_key=True)
     surname = db.Column(db.String(256))
     othernames = db.Column(db.String(256))
