@@ -34,8 +34,8 @@ class User(db.Model, UserMixin):
 class County(db.Model):
     __tablename__ = "counties"
     id = db.Column(db.Integer, primary_key=True)
-    county_code = db.Column(db.String(60))
     name = db.Column(db.String(256))
+    # county_code = db.Column(db.String(60))
     # relationships
     constituencies = db.relationship(
         'Constituency', backref='county', lazy='dynamic')
