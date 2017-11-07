@@ -8,17 +8,17 @@ class Config:
 
 
 class ProdConfig(Config):
-    # SQLALCHEMY_DATABASE_URI = os.environ.get("HEROKU_POSTGRESQL_YELLOW_URL")
+    # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL)
     pass
 
 
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://monster:Hummingbirdcomp#@localhost/county_govt'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://monster:Hummingbirdcomp#@localhost/ugatuzi'
     Debug = True
 
 
 class TestConfig(Config):
-    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://monster:Hummingbirdcomp#@localhost/county_govt_test'
+    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://monster:Hummingbirdcomp#@localhost/ugatuzi_test'
     pass
 
 
