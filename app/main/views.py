@@ -1,12 +1,18 @@
+<<<<<<< HEAD
 from flask import flash, render_template, abort
 from flask_login import login_required, current_user
 from . import main
 from .. import db
 
+=======
+from flask import render_template, request, redirect, url_for, abort
+from . import main
+>>>>>>> e7b4656626d0293ce72b13233263c3ac491dc492
 
 @main.route('/')
 def index():
     '''
+<<<<<<< HEAD
     render homepage template on the /route
     '''
     return render_template('index.html', title='Welcome to Gypsy Blogs')
@@ -28,3 +34,17 @@ def admin_dashboard():
         abort(403)
     title = "Ugatuzi Admin"
     return render_template('admin/admin_dashboard.html', title=title)
+=======
+    view route page that returns index page
+    '''
+    title = 'Home'
+    return render_template('index.html', title = title)
+
+@main.route('/counties')
+def counties():
+    '''
+    display the counties in this route
+    '''
+    title = 'Counties'
+    return render_template('counties.html')
+>>>>>>> e7b4656626d0293ce72b13233263c3ac491dc492

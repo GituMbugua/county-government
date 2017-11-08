@@ -1,0 +1,52 @@
+/* landingpage */
+html, body {
+    height: 100%;
+}
+.header-wrapper {
+    background-image: url("http://static.flickr.com/50/155764324_98a055e709_o.jpg");
+    position: cover;
+    height: 100%;
+    z-index: -1;
+}
+.header-overlay {
+    background: rgba(17, 17, 17, 0.2);
+    z-index: 1;
+}
+.home-container {
+    margin-top: 3%;
+    background: #464646;
+}
+.box {
+    background: #464646;
+}
+
+.home-description {
+    height: 600px;
+}
+.home-description h1 {
+    text-align: center;
+    font-size: 4em;
+    position: relative;
+    width: 50%;
+}
+
+.navbar-index {
+    background: #464646;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 0;
+}
+.navbar-index ul {
+    width: 100%;
+}
+.navbar-index li {
+    width: 20%; 
+    text-align: center;
+    font-size: 20px;
+}
+.navbar-index li a {
+    padding-top: 8%;    
+}
+
+
