@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/monster/Documents/python/county-government/virtual"
+VIRTUAL_ENV="/home/toel/Documents/python/flask/county-government/virtual"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
