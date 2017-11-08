@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'bootstrap/base.html'%}
+<!-- Base styles -->
+{% block styles%}
+  {{super()}}
 
-</body>
-</html>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/navbar.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+
+{% endblock %}
+
+<!-- Base Body -->
+
+{% block body %}
+
+  <!-- content section -->
+  <div class="content-wrapper">
+    {% block content %}{% endblock %}
+  </div>
+
+{% endblock %}
