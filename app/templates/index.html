@@ -1,10 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}   
+
+<header>
+        <div class="header-wrapper">
+            <div class="header-overlay">
+                <div class="container home-container">
+                    <div class="box text-center">
+                        <h1 class="navbar-brand">Kenya County Government</h1>
+                    </div>
+                </div>
+                <!-- <nav class="navbar navbar-default navbar-static-top navbar-index" role="navigation">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/">Home</a></li>
+                        <li><a href="{{url_for('main.counties')}}">Counties</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">More</a></li>
+                    </ul>
+                </nav> -->
+                <div class="container-fluid home">
+                    <div class="home-description">
+                        <hr>
+                        <h1>Know More About Your Government</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+{% endblock %}
