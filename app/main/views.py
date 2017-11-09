@@ -1,34 +1,20 @@
-<<<<<<< HEAD
-from flask import render_template, request, redirect, url_for, abort
-from . import main
-=======
 from flask import flash, render_template, abort
 from flask_login import login_required, current_user
 from . import main
 from .. import db
 
->>>>>>> 7319c7d6518d1a577598c2ecab03500078cba31e
 
 @main.route('/')
 def index():
     '''
-<<<<<<< HEAD
-    view route page that returns index page
-    '''
-    title = 'Home'
-    return render_template('index.html', title = title)
-
-@main.route('/counties')
-def counties():
-    '''
-    display the counties in this route
-    '''
-    title = 'Counties'
-    return render_template('counties.html')
-=======
     render homepage template on the /route
     '''
     return render_template('index.html', title='Welcome to Gypsy Blogs')
+
+@main.route('/counties')
+def counties():
+
+    return render_template('counties.html')
 
 
 @main.route('/dashboard')
@@ -47,4 +33,12 @@ def admin_dashboard():
         abort(403)
     title = "Ugatuzi Admin"
     return render_template('admin/admin_dashboard.html', title=title)
->>>>>>> 7319c7d6518d1a577598c2ecab03500078cba31e
+
+@main.route('/search/<county_name>')
+def search_county(county_name):
+    county_name_list = county_name.split(" ")
+    county_name_format = "+".join(county_name_list)
+    searched_counties = search_county(county_name_format)
+    title = f"Search results for {county_name}"
+
+    return render_template("search.html", counties = searched_counties)

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {% extends 'bootstrap/base.html' %}
 
 <!DOCTYPE html>
@@ -25,25 +24,3 @@
 <script src="{{url_for('static', filename = 'js/script.js')}}" ></script>
 </body>
 </html>
-=======
-{% extends 'bootstrap/base.html'%}
-<!-- Base styles -->
-{% block styles%}
-  {{super()}}
-
-  <link rel="stylesheet" href="{{url_for('static', filename='css/navbar.css')}}">
-  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-
-{% endblock %}
-
-<!-- Base Body -->
-
-{% block body %}
-
-  <!-- content section -->
-  <div class="content-wrapper">
-    {% block content %}{% endblock %}
-  </div>
-
-{% endblock %}
->>>>>>> 7319c7d6518d1a577598c2ecab03500078cba31e
