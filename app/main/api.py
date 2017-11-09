@@ -80,7 +80,7 @@ def counties_get():
 def get_constituencies():
     output=[]
     constituency_data={}
-    constituenciez=Constituency.query.filter(Constituency.county_code>0).all()
+    constituenciez=Constituency.query.filter_by(county_code=county)
     constituencies=Constituency.query.all()
     print(constituencies)
     for constituency in constituencies: 
