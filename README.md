@@ -1,0 +1,1 @@
+pip install flask flask_bootstrap flask_script flask_login flask_restful flask_wtf flask_SQLAlchemy flask_JWT
