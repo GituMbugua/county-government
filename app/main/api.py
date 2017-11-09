@@ -7,6 +7,10 @@ from functools import wraps
 from ..models import County, Constituency, Party, MCA, Governor, DeputyGovernor, Senator, WomanRep, User
 from . import main
 from ..import db
+from collections import defaultdict
+import os
+
+# secret= os.environ.get["SECRET_KEY"] 
 
 # def token_required(f):
 #     @wraps(f)
@@ -19,7 +23,7 @@ from ..import db
 #             return jsonify ({'message':'token is Missing!'}),401
 
 #         try:
-#             data = jwt.decode(token,app.config['SECRET_KEY'])
+#             data = jwt.decode(token, secret)
 #             current_user=User.query.filter_by(id=id).first()
 #         except:
 #             return jsonify({'message':'Token is Invalid!'}),401
@@ -62,20 +66,40 @@ def counties_get():
     for county in counties:
         county_data={}
         constituencies_data={}
+        county_data["county name"]=county.name
         county_data["id"] = county.id
-
-        for constituency in constituencies: 
-            if constituency.county_code:
-                county_data[county.name ] = constituencies_data["constituency"] = constituency.name
-                
+       
+    
 
         output.append(county_data)
 
     return jsonify({"Counties":output})
 
+@main.route('/counties/constituencies', methods=['GET'])
+# @token_required
+def get_constituencies():
+    output=[]
+    constituency_data={}
+    constituenciez=Constituency.query.filter(Constituency.county_code>0).all()
+    constituencies=Constituency.query.all()
+    print(constituencies)
+    for constituency in constituencies: 
+        for constie in constituenciez:
+            if constituency.county_code:
+                s=[(constituency.county.name,constie.name)]
+                d={}
+                for k,v in s:
+                    d.setdefault(k,[]).append(v)
+                    print(d.items())
+                    output.append(d)
 
-
+    
+    return jsonify({"Counties":output})
     return jsonify({"Status":"ok"})
+
+    
+        
+     
     
 
 
