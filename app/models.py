@@ -8,6 +8,7 @@ import jwt
 import datetime
 from functools import wraps
 
+
 class User(db.Model, UserMixin):
     '''
     Define User model
@@ -140,6 +141,7 @@ class DeputyGovernor(db.Model):
     party_code = db.Column(db.Integer, db.ForeignKey('parties.id'))
     governor_id = db.Column(db.Integer, db.ForeignKey('governors.id'))
     user_id = db.Column(db.ForeignKey('users.id'))
+
 
 class Senator(db.Model):
     __tablename__ = 'senators'

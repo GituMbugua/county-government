@@ -29,11 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-<<<<<<< HEAD
-set -gx VIRTUAL_ENV "/home/gitu_m/Desktop/school/core/python/project/county-government/virtual"
-=======
 set -gx VIRTUAL_ENV "/home/toel/Documents/python/flask/county-government/virtual"
->>>>>>> e20a3993be8a5ef71c48c3b7609ddb6d3d6dcf0b
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
@@ -56,7 +52,7 @@ if test -z "$VIRTUAL_ENV_DISABLE_PROMPT"
         set -l old_status $status
 
         # Prompt override?
-        if test -n "(virtual) "            
+        if test -n "(virtual) "
             printf "%s%s" "(virtual) " (set_color normal)
         else
             # ...Otherwise, prepend env

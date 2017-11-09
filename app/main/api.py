@@ -8,9 +8,6 @@ from ..models import County, Constituency, Party, MCA, Governor, DeputyGovernor,
 from . import main
 from ..import db
 from collections import defaultdict
-import os
-
-# secret= os.environ.get["SECRET_KEY"] 
 
 # def token_required(f):
 #     @wraps(f)
@@ -23,105 +20,173 @@ import os
 #             return jsonify ({'message':'token is Missing!'}),401
 
 #         try:
-#             data = jwt.decode(token, secret)
+#             data = jwt.decode(token,app.config['SECRET_KEY'])
 #             current_user=User.query.filter_by(id=id).first()
 #         except:
 #             return jsonify({'message':'Token is Invalid!'}),401
 
 #         return f(current_user,*args,**kwargs)
 
-@main.route('/womenrep', methods=['GET'])
+
+@main.route('/counties', methods=['GET'])
+# @token_required
+def counties_get():
+    counties = County.query.all()
+    constituencies = Constituency.query.all()
+
+    output = []
+
+    for county in counties:
+        county_data = {}
+        constituencies_data = {}
+        county_data["id"] = county.id
+
+        for constituency in constituencies:
+            if constituency.county_code:
+                county_data[county.name] = constituencies_data["constituency"] = constituency.name
+
+        output.append(county_data)
+
+    return jsonify({"Counties": output})
+
+    return jsonify({"Status": "ok"})
+
+
+@main.route('/counties/constituencies', methods=['GET'])
+def get_constituencies():
+    constituency_data = {}
+    output = []
+    response = []
+    # counties = County.query.all()
+    # for county in counties:
+    #     county_name = county.name
+
+    # constituencies = Constituency.query.filter(
+    #     county_code=x).all()
+    # all_constituencies = Constituency.query.all()
+    # counties = County.query.all()
+    # for county in counties:
+    #     print(county.constituencies.count()
+    # print(counties)
+    # print(len(counties))
+    # for x in range(1, len(counties)):
+    #     print(x)
+    #     print(counties[x])
+    # for x in range(0, length):
+    #     print(constituencies[x])
+    constituencies = Constituency.query.filter_by(county_code=45).all()
+    for constituency in constituencies:
+        s = [(constituency.county.name, constituency.name)]
+        # constituency_data['County'] = constituency.county.name
+        if constituency.county_code:
+            # constituency_data['County'] = constituency.county.name
+
+            for i in s:
+                output.append(s)
+                constituency_data[constituency.county.name] = output
+                print(output)
+    response.append(constituency_data)
+    return jsonify({"Constituencies": response})
+    return jsonify({"status": "ok"})
+
+
+@main.route('/governors', methods=['GET'])
+# @token_required
+def get_governors():
+    # county=County.query.get(id)
+
+    governors = Governor.query.all()
+
+    output = []
+
+    for governor in governors:
+        governor_data = {}
+        if governor.county_code:
+            governor_data["county_code"] = governor.county.id
+            governor_data["county"] = governor.county.name
+            governor_data["id"] = governor.id
+            governor_data["Governor"] = governor.surname + \
+                " " + governor.othernames
+            governor_data["Party"] = governor.party.name
+        output.append(governor_data)
+    return jsonify({"Governors": output})
+
+    return jsonify({"Status": "ok"})
+
+
+@main.route('/deputygovernors', methods=['GET'])
+# @token_required
+def get_deputygovernors():
+    # county=County.query.get(id)
+
+    deputygovernors = DeputyGovernor.query.all()
+
+    output = []
+
+    for deputygovernor in deputygovernors:
+        deputygovernor_data = {}
+        if deputygovernor.county_code:
+            deputygovernor_data["county_code"] = deputygovernor.dpgovernor.id
+            deputygovernor_data["county"] = deputygovernor.dpgovernor.name
+            deputygovernor_data["id"] = deputygovernor.id
+            deputygovernor_data["Governor"] = deputygovernor.governor.surname + \
+                " " + deputygovernor.governor.othernames
+            deputygovernor_data["Deputy Governor"] = deputygovernor.surname + \
+                " " + deputygovernor.othernames
+            deputygovernor_data["Party"] = deputygovernor.party.name
+        output.append(deputygovernor_data)
+    return jsonify({"Deputy Governors": output})
+
+    return jsonify({"Status": "ok"})
+
+
+@main.route('/senators', methods=['GET'])
+# @token_required
+def get_senators():
+    # county=County.query.get(id)
+
+    senators = Senator.query.all()
+
+    output = []
+
+    for senator in senators:
+        senator_data = {}
+        if senator.county_code:
+            senator_data["county_code"] = senator.countysenator.id
+            senator_data["county"] = senator.countysenator.name
+            senator_data["id"] = senator.id
+            senator_data["Senator"] = senator.surname + \
+                " " + senator.othernames
+            senator_data["Party"] = senator.party.name
+        output.append(senator_data)
+    return jsonify({"Governors": output})
+
+    return jsonify({"Status": "ok"})
+
+
+@main.route('/womenreps', methods=['GET'])
 # @token_required
 def woman_rep():
     # county=County.query.get(id)
 
-    womanreps=WomanRep.query.all()
+    womanreps = WomanRep.query.all()
 
-    output=[]
+    output = []
 
     for womanrep in womanreps:
-        womanrep_data={}
+        womanrep_data = {}
         if womanrep.county_code:
             womanrep_data["county_code"] = womanrep.county.id
-            womanrep_data["county"]=womanrep.county.name
+            womanrep_data["county"] = womanrep.county.name
             womanrep_data["id"] = womanrep.id
-            womanrep_data["Woman Representative"] = womanrep.surname + " " + womanrep.othernames
-            womanrep_data["Party"]=womanrep.party.name
+            womanrep_data["Woman Representative"] = womanrep.surname + \
+                " " + womanrep.othernames
+            womanrep_data["Party"] = womanrep.party.name
         output.append(womanrep_data)
-    return jsonify({"County Women Representatives":output})
+    return jsonify({"County Women Representatives": output})
 
+    return jsonify({"Status": "ok"})
 
-
-    return jsonify({"Status":"ok"})
-
-    
-@main.route('/counties', methods=['GET'])
-# @token_required
-def counties_get():
-    counties=County.query.all()
-    constituencies=Constituency.query.all()
-
-    output=[]
-
-    for county in counties:
-        county_data={}
-        constituencies_data={}
-        county_data["county name"]=county.name
-        county_data["id"] = county.id
-       
-    
-
-        output.append(county_data)
-
-    return jsonify({"Counties":output})
-
-@main.route('/counties/constituencies', methods=['GET'])
-# @token_required
-def get_constituencies():
-    output=[]
-    constituency_data={}
-    constituenciez=Constituency.query.filter(Constituency.county_code>0).all()
-    constituencies=Constituency.query.all()
-    print(constituencies)
-    for constituency in constituencies: 
-        for constie in constituenciez:
-            if constituency.county_code:
-                s=[(constituency.county.name,constie.name)]
-                d={}
-                for k,v in s:
-                    d.setdefault(k,[]).append(v)
-                    print(d.items())
-                    output.append(d)
-
-    
-    return jsonify({"Counties":output})
-    return jsonify({"Status":"ok"})
-
-    
-        
-     
-    
-
-
-
-# @main.route('/counties/constituenties', methods=['GET'])
-# def constituenties_get():
-#     constituenties=constituency.query.filter_by(constituency_code=>1)
-   
-#     output=[]
-
-#     for constituency in constituenties:
-#         consituenties_data={}
-#         consituenties_data["id"] = consituenties.id
-#         consituenties_data["counties"] = consituenties.name
-
-#         output.append(county_data)
-
-#     return jsonify({"Counties":output})
-
-
-
-#     return jsonify({"Status":"ok"})
 
 # @main.route('/login')
 # def login():
@@ -129,13 +194,13 @@ def get_constituencies():
 
 #     if not auth  or not auth.username or not auth.password:
 #         return make_response("could not verify",401,{'WWW-Authenticate':'Basic realm="Login required!"'})
-    
+
 #     user=User.query.filter_by(name=auth.username).first()
 
 #     if not user:
 #          return make_response("could not verify",401,{'WWW-Authenticate':'Basic realm="Login required!"'})
 
 #     if check_password_hash(user.password,auth.password):
-#         token=jwt=encode({'public_id':user.public_id,'exp': datetime.datetime.utcnow()+ datetime.timedelta(minutes=30) app.config['SECRET_KEY']}) 
+#         token=jwt=encode({'public_id':user.public_id,'exp': datetime.datetime.utcnow()+ datetime.timedelta(minutes=30) app.config['SECRET_KEY']})
 #         return jsonify({'token':token.decode('UTF-8')})
 #     return make_response("could not verify",401,{'WWW-Authenticate':'Basic realm="Login required!"'})
