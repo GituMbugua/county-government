@@ -82,8 +82,6 @@ celerybeat-schedule
 # dotenv
 .env
 
-# virtualenv
-.virtual
 virtual/
 ENV/
 
@@ -99,4 +97,4 @@ ENV/
 
 # mypy
 .mypy_cache/
-*.sh
+start.sh
