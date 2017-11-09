@@ -1,7 +1,12 @@
 from . import db, login_manager
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from flask import Flask, request, jsonify, make_response
+from flask_sqlalchemy import SQLAlchemy
+import uuid
+import jwt
+import datetime
+from functools import wraps
 
 class User(db.Model, UserMixin):
     '''
@@ -35,16 +40,17 @@ class County(db.Model):
     __tablename__ = "counties"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(256))
+    user_id = db.Column(db.ForeignKey('users.id'))
     # county_code = db.Column(db.String(60))
     # relationships
     constituencies = db.relationship(
         'Constituency', backref='county', lazy='dynamic')
     governors = db.relationship('Governor', backref='county', lazy='dynamic')
     deputygovernors = db.relationship(
-        'DeputyGovernor', backref='county', lazy='dynamic')
-    senators = db.relationship('Senator', backref='county', lazy='dynamic')
+        'DeputyGovernor', backref='dpgovernor', lazy='dynamic')
+    senators = db.relationship('Senator', backref='countysenator', lazy='dynamic')
     womenreps = db.relationship('WomanRep', backref='county', lazy='dynamic')
-    mcas = db.relationship('MCA', backref='county', lazy='dynamic')
+    mcas = db.relationship('MCA', backref='countymcas', lazy='dynamic')
 
 
 class Constituency(db.Model):
@@ -54,6 +60,7 @@ class Constituency(db.Model):
     name = db.Column(db.String(256))
     # foreign keys
     county_code = db.Column(db.Integer, db.ForeignKey('counties.id'))
+    user_id = db.Column(db.ForeignKey('users.id'))
     # relationships
     mca = db.relationship('MCA', backref='constituency', lazy='dynamic')
 
@@ -64,6 +71,8 @@ class Party(db.Model):
     party_code = db.Column(db.String(60))
     name = db.Column(db.String(256))
     abrv = db.Column(db.String(256))
+    # foreign Keys
+    user_id = db.Column(db.ForeignKey('users.id'))
     # relationships
     governors = db.relationship(
         'Governor', backref='party', lazy='dynamic')
@@ -81,6 +90,7 @@ class Governor(db.Model):
     surname = db.Column(db.String(256))
     othernames = db.Column(db.String(256))
     # Foreign keys
+    user_id = db.Column(db.ForeignKey('users.id'))
     county_code = db.Column(db.Integer, db.ForeignKey('counties.id'))
     party_code = db.Column(db.Integer, db.ForeignKey('parties.id'))
     # relationships
@@ -98,7 +108,7 @@ class DeputyGovernor(db.Model):
     county_code = db.Column(db.Integer, db.ForeignKey('counties.id'))
     party_code = db.Column(db.Integer, db.ForeignKey('parties.id'))
     governor_id = db.Column(db.Integer, db.ForeignKey('governors.id'))
-
+    user_id = db.Column(db.ForeignKey('users.id'))
 
 class Senator(db.Model):
     __tablename__ = 'senators'
@@ -106,6 +116,7 @@ class Senator(db.Model):
     surname = db.Column(db.String(256))
     othernames = db.Column(db.String(256))
     # Foreign keys
+    user_id = db.Column(db.ForeignKey('users.id'))
     county_code = db.Column(db.Integer, db.ForeignKey('counties.id'))
     party_code = db.Column(db.Integer, db.ForeignKey('parties.id'))
 
@@ -116,6 +127,7 @@ class WomanRep(db.Model):
     surname = db.Column(db.String(256))
     othernames = db.Column(db.String(256))
     # Foreign keys
+    user_id = db.Column(db.ForeignKey('users.id'))
     county_code = db.Column(db.Integer, db.ForeignKey('counties.id'))
     party_code = db.Column(db.Integer, db.ForeignKey('parties.id'))
 
@@ -126,6 +138,7 @@ class MCA(db.Model):
     surname = db.Column(db.String(256))
     othernames = db.Column(db.String(256))
     # Foreign keys
+    user_id = db.Column(db.ForeignKey('users.id'))
     constituency_code = db.Column(
         db.Integer, db.ForeignKey('constituencies.id'))
     county_code = db.Column(db.Integer, db.ForeignKey('counties.id'))
