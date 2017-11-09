@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #!/home/gitu_m/Desktop/school/core/python/project/county-government/virtual/bin/python3.6
+=======
+#!/home/toel/Documents/python/flask/county-government/virtual/bin/python3.6
+>>>>>>> e20a3993be8a5ef71c48c3b7609ddb6d3d6dcf0b
 
 # -*- coding: utf-8 -*-
 import re
@@ -7,5 +11,5 @@ import sys
 from setuptools.command.easy_install import main
 
 if __name__ == '__main__':
-    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
     sys.exit(main())

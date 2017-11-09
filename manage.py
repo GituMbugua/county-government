@@ -16,13 +16,13 @@ migrate = Migrate(app, db)
 manager.add_command('db', MigrateCommand)
 
 
-@manager.command
-def test():
-    '''
-    run unittests
-    '''
-    tests = unittest.TestLoader().discover('tests')
-    unittest.TextTestRunner(verbosity=2).run(tests)
+# @manager.command
+# def test():
+#     '''
+#     run unittests
+#     '''
+#     tests = unittest.TestLoader().discover('tests')
+#     unittest.TextTestRunner(verbosity=2).run(tests)
 
 
 @manager.shell

@@ -37,7 +37,11 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
+<<<<<<< HEAD
 VIRTUAL_ENV="/home/gitu_m/Desktop/school/core/python/project/county-government/virtual"
+=======
+VIRTUAL_ENV="/home/toel/Documents/python/flask/county-government/virtual"
+>>>>>>> e20a3993be8a5ef71c48c3b7609ddb6d3d6dcf0b
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

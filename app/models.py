@@ -1,7 +1,12 @@
 from . import db, login_manager
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from flask import Flask, request, jsonify, make_response
+from flask_sqlalchemy import SQLAlchemy
+import uuid
+import jwt
+import datetime
+from functools import wraps
 
 class User(db.Model, UserMixin):
     '''
@@ -73,7 +78,7 @@ class County(db.Model):
     senators = db.relationship(
         'Senator', backref='countysenator', lazy='dynamic')
     womenreps = db.relationship(
-        'WomanRep', backref='countywomen', lazy='dynamic')
+        'WomanRep', backref='county', lazy='dynamic')
     mcas = db.relationship('MCA', backref='countymcas', lazy='dynamic')
 
 
@@ -85,6 +90,7 @@ class Constituency(db.Model):
     # foreign keys
     user_id = db.Column(db.ForeignKey('users.id'))
     county_code = db.Column(db.Integer, db.ForeignKey('counties.id'))
+    user_id = db.Column(db.ForeignKey('users.id'))
     # relationships
     mca = db.relationship('MCA', backref='constituency', lazy='dynamic')
 
@@ -133,7 +139,7 @@ class DeputyGovernor(db.Model):
     county_code = db.Column(db.Integer, db.ForeignKey('counties.id'))
     party_code = db.Column(db.Integer, db.ForeignKey('parties.id'))
     governor_id = db.Column(db.Integer, db.ForeignKey('governors.id'))
-
+    user_id = db.Column(db.ForeignKey('users.id'))
 
 class Senator(db.Model):
     __tablename__ = 'senators'
