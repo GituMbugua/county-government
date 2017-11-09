@@ -7,38 +7,29 @@
 
   {% block title %}Home{% endblock %}
   {% block content %}
-    <div class="intro-header">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="intro-message">
-              <h1>UGATUZI</h1>
-              {% if current_user.is_authenticated %}
-                <li>
-                  <a href="{{ url_for('auth.logout') }}">Sign Out</a>
-                </li>
-                <li>
-                  <a>
-                    <i class="fa fa-user"></i>
-                    Hi,
-                    {{ current_user.username }}!</a>
-                </li>
-              {% else %}
-                <li>
-                  <a href="{{ url_for('main.index') }}">Home</a>
-                </li>
-                <li>
-                  <a href="{{ url_for('auth.register') }}">Register</a>
-                </li>
-                <li>
-                  <a href="{{ url_for('auth.login') }}">Sign In</a>
-                </li>
-              {% endif %}
-              <hr class="intro-divider">
-            </ul>
-          </div>
+  <div class="header-wrapper">
+    <div class="header-overlay">
+        <div class="container home-container">
+            <div class="box text-center">
+                <h1 class="navbar-brand"><span class="kenya">Kenya</span> <br><br> County Government</h1>
+            </div>
+        </div>
+        <div class="container-fluid home">
+            <div class="home-description">
+                <!-- <img src="{{url_for('static', filename = 'img/county-map.svg')}}" alt="County Map" class="img-thumbnail map"> -->
+                <h1>Know More About Your Government</h1>
+                <hr>
+                <h3>We believe you should know your leaders in the government. Get official county information now!</h3>
+            </div>
         </div>
       </div>
     </div>
-  </div>
+            <div class="container">
+                <form>
+                    <input type="text" name="county_search" placeholder="Search for a County" class="form-control">
+                    <input type="submit"  value="Submit" class="btn btn-default">
+                </form>
+            
+            </div>
+
 {% endblock %}
