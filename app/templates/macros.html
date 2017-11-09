@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% displaySearched(search_list) %}
+    {% for item in search_list %}
+        <li>
+            {{item.name}}
+        </li>
+    {% endfor %}
+{% endmacro %}
