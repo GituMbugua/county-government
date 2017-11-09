@@ -83,7 +83,7 @@ class Constituency(db.Model):
     constituency_code = db.Column(db.Integer)
     name = db.Column(db.String(256))
     # foreign keys
-    # user_id = db.Column(db.ForeignKey('users.id'))
+    user_id = db.Column(db.ForeignKey('users.id'))
     county_code = db.Column(db.Integer, db.ForeignKey('counties.id'))
     # relationships
     mca = db.relationship('MCA', backref='constituency', lazy='dynamic')
