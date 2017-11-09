@@ -1,34 +1,72 @@
 /* landingpage */
 html, body {
-    height: 100%;
+    height: 100vh;
 }
 .header-wrapper {
-    background-image: url("http://static.flickr.com/50/155764324_98a055e709_o.jpg");
-    position: cover;
-    height: 100%;
-    z-index: -1;
+    background-image: url("http://www.traveldiscoverkenya.com/wp-content/uploads/2016/03/nairobi-Kenya.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    z-index: -2;
 }
 .header-overlay {
-    background: rgba(17, 17, 17, 0.2);
-    z-index: 1;
+    background: rgba(41, 41, 41, 0.7);
+    height: 100vh;
+    position: relative;
+    z-index: -1;
 }
 .home-container {
     margin-top: 3%;
     background: #464646;
+    padding-bottom: 75px;
+    position: relative;
+    z-index: 0
+}
+
+.kenya {
+    font-size: 3em;
+    color: whitesmoke;
 }
 .box {
-    background: #464646;
+    height: 100%;
+    padding: 25px 0 53px 73px;
+    position: inherit;
+    z-index: 0;
+}
+.box h1 {
+    font-size: 2em;
+    color: rgb(138, 138, 138);
+}
+
+.map {
+    display: inline-block;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    height: 400px;
+    width: 350px;
 }
 
 .home-description {
     height: 600px;
+    color: #04bf9d;
+    margin: auto;
+    width: 70%;
+    padding: 10px;
+    text-transform: uppercase;
 }
 .home-description h1 {
-    text-align: center;
+    margin-top: 8%;
     font-size: 4em;
-    position: relative;
-    width: 50%;
+    color: whitesmoke;
+    z-index: 1;
 }
+    h3 {
+        font-size: 20px;
+        line-height: 25px;
+    }
 
 .navbar-index {
     background: #464646;
