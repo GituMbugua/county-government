@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 #!/home/toel/Documents/python/flask/county-government/virtual/bin/python3.6
 # EASY-INSTALL-ENTRY-SCRIPT: 'alembic==0.9.6','console_scripts','alembic'
 __requires__ = 'alembic==0.9.6'
+=======
+#!/home/gitu_m/Desktop/school/core/python/project/county-government/virtual/bin/python3.6
+
+# -*- coding: utf-8 -*-
+>>>>>>> 3cb7b5f80055536d02ae9f5c423a8f0dcacf5293
 import re
 import sys
 from pkg_resources import load_entry_point

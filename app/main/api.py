@@ -8,28 +8,27 @@ from ..models import County, Constituency, Party, MCA, Governor, DeputyGovernor,
 from . import main
 from ..import db
 from collections import defaultdict
-import os
 
-# secret= os.environ.get["SECRET_KEY"] 
+
+# app.config['SECRET_KEY'] = 'thisisthesecretkey' 
+
 
 # def token_required(f):
 #     @wraps(f)
-#     def decorated(*args,**kwargs):
-#         token=None
+#     def decorated(*args, **kwargs):
+#         token = request.args.get('token') #http://127.0.0.1:5000/route?token=alshfjfjdklsfj89549834ur
 
-#         if 'x-access-token' in request.headers:
-#             token=request.headers['x-access-token']
 #         if not token:
-#             return jsonify ({'message':'token is Missing!'}),401
+#             return jsonify({'message' : 'Token is missing!'}), 403
 
-#         try:
-#             data = jwt.decode(token, secret)
-#             current_user=User.query.filter_by(id=id).first()
+#         try: 
+#             data = jwt.decode(token, app.config['SECRET_KEY'])
 #         except:
-#             return jsonify({'message':'Token is Invalid!'}),401
+#             return jsonify({'message' : 'Token is invalid!'}), 403
 
-#         return f(current_user,*args,**kwargs)
+#         return f(*args, **kwargs)
 
+#     return decorated
 @main.route('/womenrep', methods=['GET'])
 # @token_required
 def woman_rep():
@@ -139,3 +138,15 @@ def get_constituencies():
 #         token=jwt=encode({'public_id':user.public_id,'exp': datetime.datetime.utcnow()+ datetime.timedelta(minutes=30) app.config['SECRET_KEY']}) 
 #         return jsonify({'token':token.decode('UTF-8')})
 #     return make_response("could not verify",401,{'WWW-Authenticate':'Basic realm="Login required!"'})
+
+
+@main.route('/login')
+def login():
+    auth = request.authorization
+
+    if auth and auth.password == 'secret':
+        token = jwt.encode({'user' : auth.username, 'exp' : datetime.datetime.utcnow() + datetime.timedelta(seconds=15)}, app.config['SECRET_KEY'])
+
+        return jsonify({'token' : token.decode('UTF-8')})
+
+    return make_response('Could not verify!', 401, {'WWW-Authenticate' : 'Basic realm="Login Required"'})

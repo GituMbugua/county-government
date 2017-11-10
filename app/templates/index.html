@@ -1,19 +1,9 @@
-{% extends "base.html" %}
-{% block styles%}
-  {{super()}}
-  <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
-  <link rel="stylesheet" href="{{url_for('static', filename='css/navbar.css')}}">
-  {% endblock%}
+{% extends 'base.html' %}
 
-  {% block title %}Home{% endblock %}
-  {% block content %}
-  <div class="header-wrapper">
+{% block content %}   
+
+<div class="header-wrapper">
     <div class="header-overlay">
-        <div class="container home-container">
-            <div class="box text-center">
-                <h1 class="navbar-brand"><span class="kenya">Kenya</span> <br><br> County Government</h1>
-            </div>
-        </div>
         <div class="container-fluid home">
             <div class="home-description">
                 <!-- <img src="{{url_for('static', filename = 'img/county-map.svg')}}" alt="County Map" class="img-thumbnail map"> -->
@@ -22,14 +12,7 @@
                 <h3>We believe you should know your leaders in the government. Get official county information now!</h3>
             </div>
         </div>
-      </div>
     </div>
-            <div class="container">
-                <form>
-                    <input type="text" name="county_search" placeholder="Search for a County" class="form-control">
-                    <input type="submit"  value="Submit" class="btn btn-default">
-                </form>
-            
-            </div>
+</div>
 
 {% endblock %}

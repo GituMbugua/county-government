@@ -1,9 +1,9 @@
 /* landingpage */
 html, body {
-    height: 100vh;
+    height: 200vh;
 }
 .header-wrapper {
-    background-image: url("http://www.traveldiscoverkenya.com/wp-content/uploads/2016/03/nairobi-Kenya.jpg");
+    background-image: url("https://cdn-images-1.medium.com/max/1000/1*EhKM8SMooM4Y_bgXKDNYcw.jpeg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -12,7 +12,7 @@ html, body {
     z-index: -2;
 }
 .header-overlay {
-    background: rgba(41, 41, 41, 0.7);
+    background: rgba(51, 51, 51, 0.5);
     height: 100vh;
     position: relative;
     z-index: -1;
@@ -86,3 +86,5 @@ html, body {
 .navbar-index li a {
     padding-top: 8%;    
 }
+
+
