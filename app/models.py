@@ -95,6 +95,11 @@ class Constituency(db.Model):
     # relationships
     mca = db.relationship('MCA', backref='constituency', lazy='dynamic')
 
+    @classmethod
+    def get_constituencies(cls, id):
+        all_constituencies = Constituency.query.filter_by(county_code=id).all()
+        return all_constituencies
+
 
 class Party(db.Model):
     __tablename__ = 'parties'
