@@ -52,8 +52,23 @@ def counties_get():
     return jsonify({"Status": "ok"})
 
 
-@main.route('/counties/constituencies', methods=['GET'])
+@main.route('/constituencies', methods=['GET'])
+# @token_required
 def get_constituencies():
+    constituencies = Constituency.query.all()
+    output = []
+    constituency_data = {}
+    for constituency in constituencies:
+        if constituency.county_code:
+            constituency_data['County'] = constituency.county.name
+            constituency_data['Constituency'] = constituency.name
+        output.append(constituency_data)
+    return jsonify({"Constituencies": output})
+    return jsonify({"Status": "ok"})
+
+
+@main.route('/counties/constituencies', methods=['GET'])
+def get_constituencies_by_id():
     constituency_data = {}
     output = []
     response = []
@@ -74,7 +89,7 @@ def get_constituencies():
     #     print(counties[x])
     # for x in range(0, length):
     #     print(constituencies[x])
-    constituencies = Constituency.query.filter_by(county_code=45).all()
+    constituencies = Constituency.query.all()
     for constituency in constituencies:
         s = [(constituency.county.name, constituency.name)]
         # constituency_data['County'] = constituency.county.name
