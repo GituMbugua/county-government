@@ -29,7 +29,11 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
+<<<<<<< HEAD
+set -gx VIRTUAL_ENV "/home/toel/Documents/python/flask/county-government/virtual"
+=======
 set -gx VIRTUAL_ENV "/home/gitu_m/Desktop/school/core/python/project/county-government/virtual"
+>>>>>>> 3cb7b5f80055536d02ae9f5c423a8f0dcacf5293
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}   
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <hr>
+            <h4>About Ugatuzi</h4>
+            <hr>
+            <br>
+            <hr>
+            <hr>
+           <h4>API</h4>
+           <hr>
+           <a href="http://">Overview</a><br>
+           <a href="http://">API Updates</a><br>
+           <a href="http://">Discover Examples</a><br>
+           <a href="http://">Sessions</a><br>
+           <a href="http://">Status Codes</a><br>
+           <a href="http://">Support</a><br>
+           <a href="http://">Terms of Use</a><br>
+           <a href="http://">Wrapper and Libraries</a><br>
+           <br>
+           <hr>
+           <hr>
+            <h4>FAQ</h4>
+            <hr>
+            <a href="http://">General</a><br>
+            <a href="http://">API </a><br>
+            <a href="http://">Accounts</a><br>
+            <a href="http://">Names and Budget</a><br>
+            <a href="http://">Website</a><br>
+           <hr>
+        </div>
+        <div class="col-md-8">
+
+            <h2>GETTING STARTED</h2>
+            <br>
+            <h4>1.Setup Your Developer Account</h4>
+            <p>Thanks for choosing the ugatuzi API to build  Knowledge  into your app or website. We know that getting started with a new API can be challenging, so we’ve created a step-by-step guide that walks you through how to create a Ugatuzi Developer account, make your first API call and more.</p>
+            <hr>
+            <br>
+
+            <h4>2.Register as a Developer</h4>
+            <p>If you are an existing Ugatuzi user, you will be able to use your own account to register. If not, you will have to either Sign Up for Ugatuzi .</p>
+            <hr>
+            <br>
+            <h4>3. Create A New Ugatuzi App</h4>
+            <p>On the next page, choose a name for your app and enter the URL where it will be hosted.</p>
+            <p>image required</p>
+            <hr>
+            <br>
+            
+            <h4>4.Objtain Your Client ID anf Sectret Key</h4>
+            <p>Once you’ve created your app, make note of your client ID and secret key, as we will need this in the next step. Please note the key below has been generated for this guide and will not be usable in an application.</p>
+            <br>
+
+            <h2>API Overview</h2>
+            <hr>
+            <p>Our API is available for everyone to use. A UGatuzi user account is required to request an API key. Professional users are approved on a per application basis.</p>
+           
+            <h3>API Documentation</h3>
+            <p>To view all the methods available, you should head over to ugatuzi. Everything outlined on this page is simply a high level overview to help you understand what is available.</p>
+            <h3>Find Data</h3>
+            <p>There are 3 ways to search for and find movies, TV shows and people on TMDb. They're outlined below.</p>
+                
+              <p> <code>/County</code>  - Text based County is the most common way. You provide a query string and we provide the closest match. County search  by text takes into account all original, translated, alternative names and titles.</p> <br>
+                
+               <p> <code>/counstituency</code>- Sometimes it useful to search for movies and TV shows based on filters or definable values like ratings, certifications or release dates. The discover method make this easy. For some example queries, and to get an idea about the things you can do with discover, take a look here.</p> <br>
+                
+               <p><code> /senetor </code> - The last but still very useful way to find data is with existing external IDs. For example, if you know the IMDB ID of a movie, TV show or person, you can plug that value into this method and we'll return anything that matches. This can be very useful when you have an existing tool and are adding our service to the mix.</p> <br>
+                
+            
+        </div>
+    </div>
+</div>
+{%endblock%}

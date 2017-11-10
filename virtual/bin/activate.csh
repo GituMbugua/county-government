@@ -8,7 +8,11 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
+<<<<<<< HEAD
+setenv VIRTUAL_ENV "/home/toel/Documents/python/flask/county-government/virtual"
+=======
 setenv VIRTUAL_ENV "/home/gitu_m/Desktop/school/core/python/project/county-government/virtual"
+>>>>>>> 3cb7b5f80055536d02ae9f5c423a8f0dcacf5293
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/bin:$PATH"
