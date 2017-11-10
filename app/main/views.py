@@ -37,6 +37,13 @@ def find_regions():
     return render_template('regions/regions.html', counties=counties)
 
 
+@main.route('/constituencies', methods=['GET', 'POST'])
+def find_constituencies():
+    counties = County.query.all()
+    print(counties)
+    return render_template('regions/regions.html', counties=counties)
+
+
 @main.route('/executives/governors', methods=['GET', 'POST'])
 def find_governors():
     deputygovernors = DeputyGovernor.query.all()
