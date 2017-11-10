@@ -181,3 +181,8 @@ class MCA(db.Model):
         db.Integer, db.ForeignKey('constituencies.id'))
     county_code = db.Column(db.Integer, db.ForeignKey('counties.id'))
     party_code = db.Column(db.Integer, db.ForeignKey('parties.id'))
+
+    @classmethod
+    def get_mcas(cls, id):
+        all_mcas = MCA.query.filter_by(county_code=id).all()
+        return all_mcas
