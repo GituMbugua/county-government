@@ -7,7 +7,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand topnav" href="/">Kenya County Government</a>
+      <a class="navbar-brand topnav" href="/">Ugatuzi Kenya</a>
+      <a class="navbar-brand topnav" href="#">Regions</a>
+      <div class="dropdown">
+        <a class="navbar-brand topnav dropbtn">Executives
+          <i class="fa fa-caret-down"></i>
+        </a>
+        <div class="dropdown-content">
+          <a class="navbar-brand topnav" href="{{url_for('main.find_governors')}}">Governors</a>
+          <a class="navbar-brand topnav" href="{{url_for('main.find_senators')}}">Senators</a>
+          <a class="navbar-brand topnav" href="{{url_for('main.find_womenreps')}}">Women Reps</a>
+        </div>
+      </div>
+      <a class="navbar-brand topnav" href="#">MCAS</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
@@ -51,6 +63,7 @@
           <li>
             <a href="{{ url_for('main.index') }}">Home</a>
           </li>
+
           <li>
             <a href="{{ url_for('auth.register') }}">Register</a>
           </li>
