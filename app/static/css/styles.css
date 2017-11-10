@@ -1,6 +1,7 @@
 /* landingpage */
 html, body {
-    height: 200vh;
+    height: 100vh;
+    margin:0px 0px 0px -8px;
 }
 .header-wrapper {
     background-image: url('/static/img/nairobi.jpg');
@@ -87,4 +88,12 @@ html, body {
     padding-top: 8%;    
 }
 
-
+.content-section{
+background-image: url('/static/img/loginbc.jpg');
+background-attachment: fixed;
+background-repeat: no-repeat;
+background-size: cover;
+height: 100vh;
+position: relative;
+z-index: -2;
+}
