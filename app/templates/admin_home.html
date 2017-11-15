@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="intro-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="intro-message">
+            <h1>UGATUZI</h1>
+            {% if current_user.is_authenticated %}
+              <li>
+                <a href="{{ url_for('auth.logout') }}">Sign Out</a>
+              </li>
+              <li>
+                <a>
+                  <i class="fa fa-user"></i>
+                  Hi,
+                  {{ current_user.username }}!</a>
+              </li>
+            {% else %}
+              <li>
+                <a href="{{ url_for('main.index') }}">Home</a>
+              </li>
+              <li>
+                <a href="{{ url_for('auth.register') }}">Register</a>
+              </li>
+              <li>
+                <a href="{{ url_for('auth.login') }}">Sign In</a>
+              </li>
+            {% endif %}
+            <hr class="intro-divider">
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

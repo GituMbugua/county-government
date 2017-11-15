@@ -9,41 +9,17 @@ from . import main
 from ..import db
 from collections import defaultdict
 
-# def token_required(f):
-#     @wraps(f)
-#     def decorated(*args,**kwargs):
-#         token=None
-
-#         if 'x-access-token' in request.headers:
-#             token=request.headers['x-access-token']
-#         if not token:
-#             return jsonify ({'message':'token is Missing!'}),401
-
-#         try:
-#             data = jwt.decode(token,app.config['SECRET_KEY'])
-#             current_user=User.query.filter_by(id=id).first()
-#         except:
-#             return jsonify({'message':'Token is Invalid!'}),401
-
-#         return f(current_user,*args,**kwargs)
-
 
 @main.route('/counties', methods=['GET'])
 # @token_required
-def counties_get():
+def get_counties():
     counties = County.query.all()
-    constituencies = Constituency.query.all()
-
     output = []
 
     for county in counties:
         county_data = {}
-        constituencies_data = {}
         county_data["id"] = county.id
-
-        for constituency in constituencies:
-            if constituency.county_code:
-                county_data[county.name] = constituencies_data["constituency"] = constituency.name
+        county_data["County"] = county.name
 
         output.append(county_data)
 
@@ -52,19 +28,19 @@ def counties_get():
     return jsonify({"Status": "ok"})
 
 
-@main.route('/constituencies', methods=['GET'])
-# @token_required
-def get_constituencies():
-    constituencies = Constituency.query.all()
-    output = []
-    constituency_data = {}
-    for constituency in constituencies:
-        if constituency.county_code:
-            constituency_data['County'] = constituency.county.name
-            constituency_data['Constituency'] = constituency.name
-        output.append(constituency_data)
-    return jsonify({"Constituencies": output})
-    return jsonify({"Status": "ok"})
+# @main.route('/constituencies', methods=['GET'])
+# # @token_required
+# def get_constituencies():
+#     constituencies = Constituency.query.all()
+#     output = []
+#     constituency_data = {}
+#     for constituency in constituencies:
+#         if constituency.county_code:
+#             constituency_data['County'] = constituency.county.name
+#             constituency_data['Constituency'] = constituency.name
+#         output.append(constituency_data)
+#     return jsonify({"Constituencies": output})
+#     return jsonify({"Status": "ok"})
 
 
 @main.route('/counties/constituencies', methods=['GET'])
@@ -219,3 +195,16 @@ def woman_rep():
 #         token=jwt=encode({'public_id':user.public_id,'exp': datetime.datetime.utcnow()+ datetime.timedelta(minutes=30) app.config['SECRET_KEY']})
 #         return jsonify({'token':token.decode('UTF-8')})
 #     return make_response("could not verify",401,{'WWW-Authenticate':'Basic realm="Login required!"'})
+
+
+@main.route('/login')
+def login():
+    auth = request.authorization
+
+    if auth and auth.password == 'secret':
+        token = jwt.encode({'user': auth.username, 'exp': datetime.datetime.utcnow(
+        ) + datetime.timedelta(seconds=15)}, app.config['SECRET_KEY'])
+
+        return jsonify({'token': token.decode('UTF-8')})
+
+    return make_response('Could not verify!', 401, {'WWW-Authenticate': 'Basic realm="Login Required"'})

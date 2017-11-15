@@ -1,4 +1,4 @@
-from flask import flash, render_template, abort
+from flask import flash, render_template, abort, request, url_for, redirect
 from flask_login import login_required, current_user
 from . import main
 from .. import db
@@ -10,7 +10,17 @@ def index():
     '''
     render homepage template on the /route
     '''
-    return render_template('index.html', title='Welcome to Gypsy Blogs')
+    search_county = request.args.get('county_search')
+
+    if search_county:
+        return redirect(url_for('search', county_name=search_county))
+    else:
+        return render_template('index.html')
+
+
+@main.route('/admin/home')
+def admin_home():
+    return render_template('admin_home.html', title='Admin Home')
 
 
 @main.route('/dashboard')
@@ -166,3 +176,11 @@ def find_womenreps():
     womenreps = WomanRep.query.all()
     print(womenreps)
     return render_template('executives/womenreps.html', womenreps=womenreps)
+
+
+@main.route('/api/documentation')
+def get_doc():
+
+    title = 'Api DOcumentation'
+
+    return render_template('api/doc.html')

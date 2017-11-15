@@ -1,78 +1,56 @@
-<div class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-  <div class="container-fluid topnav">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand topnav" href="/">Ugatuzi Kenya</a>
-      <a class="navbar-brand topnav" href="{{url_for('main.find_constituencies')}}">Regions</a>
-      <div class="dropdown">
-        <a class="navbar-brand topnav dropbtn">Executives
-          <i class="fa fa-caret-down"></i>
-        </a>
-        <div class="dropdown-content">
-          <a class="navbar-brand topnav" href="{{url_for('main.find_governors')}}">Governors</a>
-          <a class="navbar-brand topnav" href="{{url_for('main.find_senators')}}">Senators</a>
-          <a class="navbar-brand topnav" href="{{url_for('main.find_womenreps')}}">Women Reps</a>
-        </div>
+{% block styles %}
+  <link rel="stylesheet" href="{{url_for('static', filename = 'css/navbar.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename = 'css/index.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename = 'css/styles.css')}}">
+{% endblock %}
+{% block body%}
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">UGATUZI KENYA</a>
       </div>
-      <a class="navbar-brand topnav" href="{{url_for('main.find_mcas')}}">MCAS</a>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/api/documentation">API</a>
+          </li>
+          <li>
+            <a href="{{url_for('main.find_regions')}}">Counties</a>
+          </li>
+          <li>
+            <a class="navbar-brand topnav" href="{{url_for('main.find_constituencies')}}"></a>
+          </li>
+          <li>
+            <a class="navbar-brand topnav" href="{{url_for('main.find_governors')}}">Governors</a>
+          </li>
+          <li>
+            <a class="navbar-brand topnav" href="{{url_for('main.find_senators')}}">Senators</a>
+          </li>
+          <li>
+            <a class="navbar-brand topnav" href="{{url_for('main.find_mcas')}}">MCAS</a>
+          </li>
+          <li>
+            <a class="navbar-brand topnav" href="{{url_for('main.find_womenreps')}}">Women Reps</a>
+          </li>
+          <li>
+            <a href="{{url_for('auth.register')}}">REGISTER</a>
+          </li>
+          <li>
+            <a href="{{url_for('auth.login')}}">LOGIN</a>
+          </li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        {% if current_user.is_authenticated %}
-          {% if current_user.is_admin %}
-            <li>
-              <a href="{{url_for('main.admin_dashboard')}}">Admin</a>
-            </li>
-            <li>
-              <a href="#">API</a>
-            </li>
-            <li>
-              <a href="#">About</a>
-            </li>
-            <li>
-              <a href="#">Contact</a>
-            </li>
-          {% else %}
-            <div class="dropdown">
-              <a href="#">
-                <li class="dropbtn">Counties
-                  <i class="fa fa-caret-down"></i>
-                </li>
-              </a>
-              <div class="dropdown-content">
-                <li>
-                  <a href="#"></a>Mombasa</li>
-              </div>
-            </div>
-          {% endif %}
-          <li>
-            <a href="{{ url_for('auth.logout') }}">Sign Out</a>
-          </li>
-          <li>
-            <a>
-              <i class="fa fa-user"></i>
-              Hi,
-              {{ current_user.username }}!</a>
-          </li>
-        {% else %}
-          <li>
-            <a href="{{ url_for('main.index') }}">Home</a>
-          </li>
-
-          <li>
-            <a href="{{ url_for('auth.register') }}">Register</a>
-          </li>
-          <li>
-            <a href="{{ url_for('auth.login') }}">Sign In</a>
-          </li>
-        {% endif %}
-      </ul>
-    </div>
-  </div>
-</div>
-</div>
+  </nav>
+{% endblock %}
+{% block script %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="{{url_for('static', filename = 'js/script.js')}}"></script>
+{% endblock %}
