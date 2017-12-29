@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% import "bootstrap/utils.html" as utils %}
+
+{% block styles%}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+{% endblock %}
+
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+  <div class="section-content">
+    <div class="outer-table">
+      <div class="middle-table">
+        <div class="inner-table">
+          <br/>
+          {{ utils.flashed_messages() }}
+          <br/>
+          <h2 style="text-align:center;">Counties</h2>
+          <hr class="intro-divider">
+          <div class="center">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th width="15%">
+                    id
+                  </th>
+                  <th width="45%">
+                    County
+                  </th>
+                  <th width="40%">
+                    Constituency Count
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for county in counties %}
+                  <tr>
+                    <td>
+                      {{ county.id }}
+                    </td>
+                    <td>
+                      {{county.name}}
+                    </td>
+                    <td>
+                      {% if county.constituencies %}
+                        {{ county.constituencies.count() }}
+                      {% else %}
+                        0
+                      {% endif %}
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <div style="text-align: center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

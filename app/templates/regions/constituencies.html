@@ -1,0 +1,61 @@
+{% extends 'base.html'%}
+
+{% import 'macros.html' as macro %}
+{%block styles%}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+{% endblock %}
+
+{% block content %}
+  <div class="center">
+    <h2 style="text-align:center;">Constituencies</h2>
+    {{macro.displayConstituencies(Mombasa)}}
+    {{macro.displayConstituencies(Kwale)}}
+    {{macro.displayConstituencies(Kilifi)}}
+    {{macro.displayConstituencies(TanaRiver)}}
+    {{macro.displayConstituencies(Lamu)}}
+    {{macro.displayConstituencies(TaitaTaveta)}}
+    {{macro.displayConstituencies(Garissa)}}
+    {{macro.displayConstituencies(Wajir)}}
+    {{macro.displayConstituencies(Mandera)}}
+    {{macro.displayConstituencies(Marsabit)}}
+    {{macro.displayConstituencies(Isiolo)}}
+    {{macro.displayConstituencies(Meru)}}
+    {{macro.displayConstituencies(TharakaNithi)}}
+    {{macro.displayConstituencies(Embu)}}
+    {{macro.displayConstituencies(Kitui)}}
+    {{macro.displayConstituencies(Machakos)}}
+    {{macro.displayConstituencies(Makueni)}}
+    {{macro.displayConstituencies(Nyandarua)}}
+    {{macro.displayConstituencies(Nyeri)}}
+    {{macro.displayConstituencies(Kirinyaga)}}
+    {{macro.displayConstituencies(Muranga)}}
+    {{macro.displayConstituencies(Kiambu)}}
+    {{macro.displayConstituencies(Turkana)}}
+    {{macro.displayConstituencies(WestPokot)}}
+    {{macro.displayConstituencies(Samburu)}}
+    {{macro.displayConstituencies(TransNzoia)}}
+    {{macro.displayConstituencies(UasinGishu)}}
+    {{macro.displayConstituencies(ElgeyoMarakwet)}}
+    {{macro.displayConstituencies(Nandi)}}
+    {{macro.displayConstituencies(Baringo)}}
+    {{macro.displayConstituencies(Laikipia)}}
+    {{macro.displayConstituencies(Nakuru)}}
+    {{macro.displayConstituencies(Narok)}}
+    {{macro.displayConstituencies(Kajiado)}}
+    {{macro.displayConstituencies(Kericho)}}
+    {{macro.displayConstituencies(Bomet)}}
+    {{macro.displayConstituencies(Kakamega)}}
+    {{macro.displayConstituencies(Vihiga)}}
+    {{macro.displayConstituencies(Bungoma)}}
+    {{macro.displayConstituencies(Busia)}}
+    {{macro.displayConstituencies(Siaya)}}
+    {{macro.displayConstituencies(Kisumu)}}
+    {{macro.displayConstituencies(HomaBay)}}
+    {{macro.displayConstituencies(Migori)}}
+    {{macro.displayConstituencies(Kisii)}}
+    {{macro.displayConstituencies(Nyamira)}}
+    {{macro.displayConstituencies(Nairobi)}}
+  </div>
+
+{% endblock %}

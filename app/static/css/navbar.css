@@ -1,0 +1,78 @@
+.navbar {
+  height: 80px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  z-index: 100;
+  -webkit-transition: background-color 1s ease 0s;
+  transition: background-color 1s ease 0s;
+}
+
+.navbar-default .navbar-brand {
+  margin-top: 10px;
+  color: white;
+}
+
+.navbar-default .navbar-brand:hover {
+  color: #C57ED3;
+  border: 1px solid #C57ED3;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: white;
+  margin: 10px 5px 5px 5px;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:active, .navbar-default .navbar-nav>li>a:focus {
+  color: #C57ED3;
+  border: 3px solid #1d1b1d;
+}
+
+.navbar-default .navbar-nav>li>a:visited {
+  color: #eee;
+  text-decoration: none;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+  background-color: transparent;
+  color: #C57ED3;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: #C57ED3;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: #490D40;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  color: #C57ED3;
+  background-color: #C57ED3;
+}
+
+.navbar-default .navbar-collapse.collapse.in ul {
+  background-color: #490D40;
+}
+
+
+/* Solid class attached on scroll past first section */
+
+.navbar.solid {
+  background-color: #490D40;
+  -webkit-transition: background-color 1s ease 0s;
+  transition: background-color 1s ease 0s;
+  box-shadow: 0 0 4px grey;
+}
+
+.navbar.solid .navbar-brand {
+  color: #C57ED3;
+  -webkit-transition: color 1s ease 0s;
+  transition: color 1s ease 0s;
+}
+
+.navbar.solid .navbar-nav>li>a {
+  color: white;
+  -webkit-transition: color 1s ease 0s;
+  transition: color 1s ease 0s;
+}

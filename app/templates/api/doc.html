@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <hr>
+        <h4>About Ugatuzi</h4>
+        <hr>
+        <br>
+        <hr>
+        <hr>
+        <h4>API</h4>
+        <hr>
+        <a href="#">Overview</a><br>
+        <a href="#">API Updates</a><br>
+        <a href="#">Discover Examples</a><br>
+        <a href="#">Sessions</a><br>
+        <a href="#">Status Codes</a><br>
+        <a href="#">Support</a><br>
+        <a href="#">Terms of Use</a><br>
+        <a href="#">Wrapper and Libraries</a><br>
+        <br>
+        <hr>
+        <hr>
+        <h4>Endpoints Overview</h4>
+        <a href="{{url_for('main.get_counties')}}">
+          <code>get counties</code>
+        </a>
+        <br>
+        <a href="{{url_for('main.get_constituencies_by_id')}}">
+          <code>get constituencies</code>
+        </a>
+        <br>
+        <a href="{{url_for('main.get_governors')}}">
+          <code>get governors</code>
+        </a>
+        <br>
+        <a href="{{url_for('main.get_deputygovernors')}}">
+          <code>get deputy governors</code>
+        </a>
+        <br>
+        <a href="{{url_for('main.get_senators')}}">
+          <code>get senators</code>
+        </a>
+        <br>
+        <a href="{{url_for('main.woman_rep')}}">
+          <code>get Women Reps</code>
+        </a>
+        <br>
+
+        <h4>FAQ</h4>
+        <hr>
+        <a href="http://">General</a><br>
+        <a href="http://">API
+        </a><br>
+        <a href="http://">Accounts</a><br>
+        <a href="http://">Names and Budget</a><br>
+        <a href="http://">Website</a><br>
+        <hr>
+      </div>
+      <div class="col-md-8" style="background-color:rgba(250, 244, 244, 0.678)">
+
+        <h2>GETTING STARTED</h2>
+        <br>
+        <h4>1.Setup Your Developer Account</h4>
+        <p>Thanks for choosing the ugatuzi API to build Knowledge into your app or website. We know that getting started with a new API can be challenging, so we’ve created a step-by-step guide that walks you through how to create a Ugatuzi Developer
+          account, make your first API call and more.</p>
+        <hr>
+        <br>
+
+        <h4>2.Register as a Developer</h4>
+        <p>If you are an existing Ugatuzi user, you will be able to use your own account to register. If not, you will have to either Sign Up for Ugatuzi .</p>
+        <hr>
+        <br>
+        <h4>3. Create A New Ugatuzi App</h4>
+        <p>On the next page, choose a name for your app and enter the URL where it will be hosted.</p>
+        <p>image required</p>
+        <hr>
+        <br>
+
+        <h4>4.Objtain Your Client ID anf Sectret Key</h4>
+        <p>Once you’ve created your app, make note of your client ID and secret key, as we will need this in the next step. Please note the key below has been generated for this guide and will not be usable in an application.</p>
+        <br>
+
+        <h2>API Overview</h2>
+        <hr>
+        <p>Our API is available for everyone to use. A UGatuzi user account is required to request an API key. Professional users are approved on a per application basis.</p>
+
+        <h3>API Documentation</h3>
+        <p>To view all the methods available, you should head over to ugatuzi. Everything outlined on this page is simply a high level overview to help you understand what is available.</p>
+        <h3>Find Data</h3>
+        <p>There are 3 ways to search for and find movies, TV shows and people on TMDb. They're outlined below.</p>
+
+        <p>
+          <code>/County</code>
+          - Text based County is the most common way. You provide a query string and we provide the closest match. County search by text takes into account all original, translated, alternative names and titles.</p>
+        <br>
+
+        <p>
+          <code>/counstituency</code>- Sometimes it useful to search for constituencies based on filters or definable values like id and county codes, certifications or elecction date. The discover method make this easy.</p>
+        <br>
+
+        <p>
+          <code>
+            /senetor
+          </code>
+          - The last but still very useful way to find data is with existing external IDs. For example, if you know the County Women Rep ,Senetors or MCAs, you can plug that value into this method and we'll return anything that matches. This can be very useful
+          when you have an existing tool and are adding our service to the mix.</p>
+        <br>
+        <h2>Discover API Examples</h2>
+        <p>Our discover methods can be very powerful tools when you're looking for specific data. Below are some examples to showcase some of the powerful things you can do.</p>
+
+        <h3>Who are the Leader in Mombasa</h3>
+        <hr>
+        <code>URL: /county/governor</code>
+        <h2>Sessions</h2>
+        <h3>Authentication</h3>
+        <p>
+          As outlined in the getting started guide, the basics to getting a user authenticated look like this:</p>
+        <ul>
+          <li>
+            Create a new request token</li>
+          <li>Get the user to authorize the request token</li>
+          <li>Create a new session id with the athorized request token</li>
+          <li>Create a new session id with the athorized request token</li>
+        </ul>
+        <br>
+
+        <h4>step 1: Create a request token
+        </h4>
+        <hr style="height:10px">
+        <p>The first step as a developer is to request a new token. This is a temporary token that is required to ask the user for permission to access their account. This token will auto expire after 60 minutes if it's not used.</p>
+        <br>
+        <h4>Step 2: Ask the user for permission</h4>
+        <hr>
+        <p>With a request token in hand, forward your user to the following URL:</p>
+        <code>
+          http://127.0.0.1:5000/authenticate/{REQUEST_TOKEN}</code>
+        <br>
+        <br>
+        <p>Once the user has approved your request token, they will either be redirected to the URL you specified in the redirect_to parameter or to the
+          <code>/authenticate/allow
+          </code>
+          path on Ugatuzi. If they aren't redirected to a custom URL, the page will also have a Authentication-Callback header. This header contains the API call for step #3. You can either manually generate it or simply use the one we return.</p>
+        <br>
+
+        <h4>Step 3: Create a session ID</h4>
+        <hr>
+        <p>By calling the
+          <code>
+            new session method
+          </code>
+          with the request token that has been approved by the user in step 2, we will return a new session_id. This is the session that can now be used to write user data. You should treat this key like a password and keep it secret.</p>
+        <br>
+        <h4>Guest sessions</h4>
+        <p>A guest session can be used to rate movies without having a registered TMDb user account. For more information about how to create a guest session see here.</p>
+      </div>
+
+    </div>
+  </div>
+  {%endblock%}

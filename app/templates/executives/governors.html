@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% import "bootstrap/utils.html" as utils %}
+
+{% block styles%}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+{% endblock %}
+
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+  <div class="section-content">
+    <div class="outer-table">
+      <div class="middle-table">
+        <div class="inner-table">
+          <br/>
+          {{ utils.flashed_messages() }}
+          <br/>
+          <h2 style="text-align:center;">Governors and Deputy Governors</h2>
+          <hr class="intro-divider">
+          <div class="center">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th width="10%">
+                    id
+                  </th>
+                  <th width="20%">
+                    County
+                  </th>
+                  <th width="35%">
+                    Governor
+                  </th>
+                  <th width="35%">
+                    Deputy Governor
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for deputygovernor in deputygovernors %}
+                  <tr>
+                    <td>
+                      {{ deputygovernor.id }}
+                    </td>
+                    <td>
+                      {{deputygovernor.dpgovernor.name}}
+                    </td>
+                    <td>
+                      {{deputygovernor.governor.surname + " " + deputygovernor.governor.othernames}}
+                    </td>
+                    <td>
+                      {{deputygovernor.surname + " " + deputygovernor.othernames}}
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <div style="text-align: center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

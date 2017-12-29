@@ -1,0 +1,60 @@
+{% extends 'base.html'%}
+
+{% import 'macros.html' as macro %}
+{%block styles%}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+{% endblock %}
+
+{% block content %}
+  <div class="section-content">
+    {{macro.displaymcas(Mombasa)}}
+    {{macro.displaymcas(Kwale)}}
+    {{macro.displaymcas(Kilifi)}}
+    {{macro.displaymcas(TanaRiver)}}
+    {{macro.displaymcas(Lamu)}}
+    {{macro.displaymcas(TaitaTaveta)}}
+    {{macro.displaymcas(Garissa)}}
+    {{macro.displaymcas(Wajir)}}
+    {{macro.displaymcas(Mandera)}}
+    {{macro.displaymcas(Marsabit)}}
+    {{macro.displaymcas(Isiolo)}}
+    {{macro.displaymcas(Meru)}}
+    {{macro.displaymcas(TharakaNithi)}}
+    {{macro.displaymcas(Embu)}}
+    {{macro.displaymcas(Kitui)}}
+    {{macro.displaymcas(Machakos)}}
+    {{macro.displaymcas(Makueni)}}
+    {{macro.displaymcas(Nyandarua)}}
+    {{macro.displaymcas(Nyeri)}}
+    {{macro.displaymcas(Kirinyaga)}}
+    {{macro.displaymcas(Muranga)}}
+    {{macro.displaymcas(Kiambu)}}
+    {{macro.displaymcas(Turkana)}}
+    {{macro.displaymcas(WestPokot)}}
+    {{macro.displaymcas(Samburu)}}
+    {{macro.displaymcas(TransNzoia)}}
+    {{macro.displaymcas(UasinGishu)}}
+    {{macro.displaymcas(ElgeyoMarakwet)}}
+    {{macro.displaymcas(Nandi)}}
+    {{macro.displaymcas(Baringo)}}
+    {{macro.displaymcas(Laikipia)}}
+    {{macro.displaymcas(Nakuru)}}
+    {{macro.displaymcas(Narok)}}
+    {{macro.displaymcas(Kajiado)}}
+    {{macro.displaymcas(Kericho)}}
+    {{macro.displaymcas(Bomet)}}
+    {{macro.displaymcas(Kakamega)}}
+    {{macro.displaymcas(Vihiga)}}
+    {{macro.displaymcas(Bungoma)}}
+    {{macro.displaymcas(Busia)}}
+    {{macro.displaymcas(Siaya)}}
+    {{macro.displaymcas(Kisumu)}}
+    {{macro.displaymcas(HomaBay)}}
+    {{macro.displaymcas(Migori)}}
+    {{macro.displaymcas(Kisii)}}
+    {{macro.displaymcas(Nyamira)}}
+    {{macro.displaymcas(Nairobi)}}
+  </div>
+
+{% endblock %}
